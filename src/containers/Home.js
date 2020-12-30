@@ -12,10 +12,42 @@ function Home() {
   // TODO
   return (
     // Container
-    <div className="flex flex-col h-screen bg-green-200">
-      <City cityName={"Tokyo"} temp={"10°C"} color={"bg-yellow-500"} />
-      <City cityName={"Jakarta"} temp={"20°C"} color={"bg-red-500"} />
-      <City cityName={"Bandung"} temp={"30°C"} color={"bg-blue-500"} />
+    <div className="text-center">
+      <div className="inline-flex flex-row flex-wrap">
+        <City
+          cityName={"Atlanta"}
+          temp={"10°C"}
+          color={"bg-red-200 hover:bg-red-300"}
+        />
+        <City
+          cityName={"Jakarta"}
+          temp={"20°C"}
+          color={"bg-green-200 hover:bg-green-300"}
+        />
+        <City
+          cityName={"Bali"}
+          temp={"30°C"}
+          color={"bg-yellow-200 hover:bg-yellow-300"}
+        />
+      </div>
+
+      <div className="inline-flex flex-row flex-wrap">
+        <City
+          cityName={"Kuala Lumpur"}
+          temp={"32°C"}
+          color={"bg-blue-200 hover:bg-blue-300"}
+        />
+        <City
+          cityName={"Beijing"}
+          temp={"-12°C"}
+          color={"bg-pink-200 hover:bg-pink-300"}
+        />
+        <City
+          cityName={"Mumbai"}
+          temp={"31°C"}
+          color={"bg-purple-200 hover:bg-purple-300"}
+        />
+      </div>
     </div>
   );
 }
