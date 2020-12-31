@@ -14,14 +14,12 @@ function Home() {
   return (
     // Container
     <div className="text-center">
-      <div className="inline-flex flex-row flex-wrap">
-        <a href="../components/Section">
-          <CityHome
-            cityName={"Atlanta"}
-            temp={"10°C"}
-            color={"bg-red-200 hover:bg-red-300"}
-          />
-        </a>
+      <div className="flex flex-row flex-wrap mt-10 mx-32">
+        <CityHome
+          cityName={"Atlanta"}
+          temp={"10°C"}
+          color={"bg-red-200 hover:bg-red-300"}
+        />
         <CityHome
           cityName={"Jakarta"}
           temp={"20°C"}
@@ -34,7 +32,7 @@ function Home() {
         />
       </div>
 
-      <div className="inline-flex flex-row flex-wrap">
+      <div className="flex flex-row flex-wrap mt-10 mx-32">
         <CityHome
           cityName={"Kuala Lumpur"}
           temp={"32°C"}
