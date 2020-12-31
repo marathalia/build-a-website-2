@@ -2,10 +2,11 @@ import React, { useState, useEffect, useMemo } from "react";
 // import axios from "axios";
 // import { useHistory } from "react-router-dom";
 
+import Section from "../components/Section";
 import Header from "../components/Header";
 import WeatherImage from "../components/WeatherImage";
 
-import City from "../components/City";
+import CityHome from "../components/City";
 const weatherKey = `TODO`; // Your API Key here
 
 function Home() {
@@ -14,17 +15,19 @@ function Home() {
     // Container
     <div className="text-center">
       <div className="inline-flex flex-row flex-wrap">
-        <City
-          cityName={"Atlanta"}
-          temp={"10°C"}
-          color={"bg-red-200 hover:bg-red-300"}
-        />
-        <City
+        <a href="../components/Section">
+          <CityHome
+            cityName={"Atlanta"}
+            temp={"10°C"}
+            color={"bg-red-200 hover:bg-red-300"}
+          />
+        </a>
+        <CityHome
           cityName={"Jakarta"}
           temp={"20°C"}
           color={"bg-green-200 hover:bg-green-300"}
         />
-        <City
+        <CityHome
           cityName={"Bali"}
           temp={"30°C"}
           color={"bg-yellow-200 hover:bg-yellow-300"}
@@ -32,17 +35,17 @@ function Home() {
       </div>
 
       <div className="inline-flex flex-row flex-wrap">
-        <City
+        <CityHome
           cityName={"Kuala Lumpur"}
           temp={"32°C"}
           color={"bg-blue-200 hover:bg-blue-300"}
         />
-        <City
+        <CityHome
           cityName={"Beijing"}
           temp={"-12°C"}
           color={"bg-pink-200 hover:bg-pink-300"}
         />
-        <City
+        <CityHome
           cityName={"Mumbai"}
           temp={"31°C"}
           color={"bg-purple-200 hover:bg-purple-300"}
