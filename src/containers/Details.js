@@ -87,47 +87,50 @@ function Details() {
           <a>Weather App</a>
         </div>
       </div>
-      <div className="mx-32 mt-3.5 mb-10 px-24 pt-8">
-        <div className="grid grid-row-3 grid-flow-col gap-10 auto-rows-fr font-mono">
-          <div className="bg-pink-200 row-span-3 col-span-3 shadow-lg rounded-2xl p-20 pt-32">
-            <WeatherImage
-              weatherType={weatherType}
-              className="text-5xl text-center justify-center"
-            />
-            <div className="text-5xl mb-10 font-mono">{weatherType}</div>
-            <div className="text-4xl pt-16">
-              Current Temperature:{" "}
-              <a className="text-6xl font-mono">{currentTemp}</a>
+
+        <div className="mx-32 mt-3.5 mb-10 px-24 pt-8">
+            <div className="grid grid-row-3 grid-flow-col gap-10 auto-rows-fr font-mono">
+                <div className="bg-pink-200 row-span-3 col-span-3 shadow-lg rounded-2xl p-20 pt-32">
+                    <WeatherImage
+                    weatherType={weatherType}
+                    className="text-5xl text-center justify-center"
+                    />
+                    <div className="text-5xl mb-10 font-mono">{weatherType}</div>
+                    <div className="text-4xl pt-16">
+                    Current Temperature:{" "}
+                    <a className="text-6xl font-mono">{currentTemp}</a>
+                    </div>
+                </div>
+            
+                <div className="bg-blue-200 col-span-3 rounded-2xl shadow-lg py-16 px-10 text-6xl font-mono">
+                    <div className="align-middle items-center text-right">
+                    {" "}
+                    {city}.{" "}
+                    </div>
+                </div>
+
+                <div className="bg-purple-200 col-span-1 rounded-2xl shadow-lg p-10 items-center align-middle">
+                    <a className="text-xl">High Temperature:</a>
+                    <p className="text-5xl">{highTemp}</p>
+                </div>
+                <div className="bg-yellow-200 col-span-1 rounded-2xl shadow-lg p-10 items-center align-middle">
+                    <a className="text-xl">Cloudiness:</a>
+                    <p className="text-5xl">{cloudiness}</p>
+                </div>
+                <div className="bg-purple-200 col-span-1 rounded-2xl shadow-lg p-10">
+                    <a className="text-xl">Low Temperature:</a>
+                    <p className="text-5xl">{lowTemp}</p>
+                </div>
+                <div className="bg-yellow-200 col-span-1 rounded-2xl shadow-lg p-10">
+                    <a className="text-xl">Humidity:</a>
+                    <p className="text-5xl">{humidity}</p>
+                </div>
+                <div className="bg-green-200 row-span-2 rounded-2xl shadow-lg p-10">
+                    <a className="text-xl">Wind Speed:</a>
+                    <p className="text-5xl">{windSpeed}</p>
+                </div>
             </div>
-          </div>
-          <div className="bg-blue-200 col-span-3 rounded-2xl shadow-lg py-16 px-10 text-6xl font-mono">
-            <div className="align-middle items-center text-right">
-              {" "}
-              {city}.{" "}
-            </div>
-          </div>
-          <div className="bg-purple-200 col-span-1 rounded-2xl shadow-lg p-10 items-center align-middle">
-            <a className="text-xl">High Temperature:</a>
-            <p className="text-5xl">{highTemp}</p>
-          </div>
-          <div className="bg-yellow-200 col-span-1 rounded-2xl shadow-lg p-10 items-center align-middle">
-            <a className="text-xl">Cloudiness:</a>
-            <p className="text-5xl">{cloudiness}</p>
-          </div>
-          <div className="bg-purple-200 col-span-1 rounded-2xl shadow-lg p-10">
-            <a className="text-xl">Low Temperature:</a>
-            <p className="text-5xl">{lowTemp}</p>
-          </div>
-          <div className="bg-yellow-200 col-span-1 rounded-2xl shadow-lg p-10">
-            <a className="text-xl">Humidity:</a>
-            <p className="text-5xl">{humidity}</p>
-          </div>
-          <div className="bg-green-200 row-span-2 rounded-2xl shadow-lg p-10">
-            <a className="text-xl">Wind Speed:</a>
-            <p className="text-5xl">{windSpeed}</p>
-          </div>
         </div>
-      </div>
     </div>
   );
 }
