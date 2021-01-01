@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
-import Section from "../components/Section";
 import Header from "../components/Header";
 import WeatherImage from "../components/WeatherImage";
 
@@ -17,70 +16,79 @@ function Home() {
     {
       name: "Jakarta",
       currentTemp: "0",
+      weatherType: "",
       color: "bg-yellow-200 hover:bg-yellow-300",
     },
     {
-      name: "Bandung",
+      name: "Moscow",
       currentTemp: "0",
+      weatherType: "",
       color: "bg-red-200 hover:bg-red-300",
     },
     {
-      name: "Malang",
+      name: "Konya",
       currentTemp: "0",
+      weatherType: "",
       color: "bg-blue-200 hover:bg-blue-300",
     },
     {
-      name: "Beijing",
+      name: "Wuhan",
       currentTemp: "0",
+      weatherType: "",
       color: "bg-purple-200 hover:bg-purple-300",
     },
     {
-      name: "Kuala Lumpur",
+      name: "Nairobi",
       currentTemp: "0",
+      weatherType: "",
       color: "bg-green-200 hover:bg-green-300",
     },
     {
-      name: "Bali",
+      name: "Zermatt",
       currentTemp: "0",
+      weatherType: "",
       color: "bg-pink-200 hover:bg-pink-300",
     },
   ]);
 
   useEffect(() => {
-    // console.log(process.env.REACT_APP_WEATHER_KEY);
-    axios
+    updateAllWeatherData();
+  }, []);
+
+  // Fetch the weather data for 1 city
+  async function fetchWeatherData(cityName) {
+    const res = await axios
       .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_WEATHER_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${process.env.REACT_APP_WEATHER_KEY}`
       )
       .then(function (response) {
         // Successful request
         const weather = response.data;
-        setWeatherData(weather);
+        return weather;
       })
       .catch(function (error) {
         // The best practice of coding is to not use console.log
-        console.log(error);
+        console.warn(error);
       });
-  }, [city]);
 
-  useEffect(() => {
-    const searchParams = history.location.search;
-    const urlParams = new URLSearchParams(searchParams);
-    const city = urlParams.get("city");
-    if (city) {
-      setCity(city);
-    }
-  }, [history]);
+    return res;
+  }
 
-  const { currentTemp } = useMemo(() => {
-    let currentTemp = "";
-    if (weatherData) {
-      currentTemp = `${Math.round(weatherData.main.temp)}°C`;
-    }
-    return {
-      currentTemp,
-    };
-  }, [weatherData]);
+  // update the list data
+  async function updateAllWeatherData(params) {
+    cities.forEach(function (citiesItems, index) {
+      let weatherData = {};
+      let newCities = [...cities];
+
+      fetchWeatherData(citiesItems.name).then((res) => {
+        weatherData = res;
+
+        newCities[index].currentTemp = weatherData.main.temp;
+        newCities[index].weatherType = weatherData.weather[0].main;
+        setCities(newCities);
+      });
+    });
+  }
 
   return (
     // Container
@@ -96,6 +104,7 @@ function Home() {
           {cities.map((item, index) => (
             <CityHome
               cityName={item.name}
+              weatherType={item.weatherType}
               temp={item.currentTemp}
               color={item.color}
             />
